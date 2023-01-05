@@ -1,6 +1,6 @@
 import React from "react";
 
-const SearchComponent = ({title}) => {
+const SearchComponent = () => {
     return (
         <div className="searchComponent">
             kek
