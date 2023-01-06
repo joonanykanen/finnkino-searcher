@@ -3,7 +3,7 @@ import React from "react";
 const InfoComponent = () => {
     return (
         <div className="infoComponent">
-            moi
+            Single Movie Info Here
         </div>
     )
 }
