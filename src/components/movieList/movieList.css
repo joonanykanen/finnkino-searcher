@@ -12,6 +12,10 @@
     margin-bottom: 0.5rem;
 }
 
+.searchBox {
+        font-size: medium;
+      }
+
 .shadow-drop-2-center {
 	-webkit-animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 	        animation: shadow-drop-2-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;

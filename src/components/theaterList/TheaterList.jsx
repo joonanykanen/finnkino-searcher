@@ -1,10 +1,10 @@
 import React from "react"
 import convert from "xml-js"
-import Dropdown from 'react-bootstrap/Dropdown';
+/*  import Dropdown from 'react-bootstrap/Dropdown';    Consider getting rid of this dependency  */
 import TheaterListItem from "./TheaterListItem"
 import "./theaterList.css"
 
-const TheaterList = () => {
+const TheaterList = ({ selectedTheater, setSelectedTheater }) => {
     const [theaters, setTheaters] = React.useState('')
     const [theaterObj, setTheaterObj] = React.useState([])
     const [showTheater, setShowTheaters] = React.useState(false)
@@ -33,6 +33,13 @@ const TheaterList = () => {
         getMovieData()
     }, [])
     
+    const onClickHandler = (theater) => {
+        setSelectedTheater(
+            selectedTheater === null || theater.id !== selectedTheater.id ? theater : null
+        )
+        setShowTheaters(!showTheater)
+      }
+
     if(showTheater) {
         return(
             <div>
@@ -42,6 +49,8 @@ const TheaterList = () => {
                     <TheaterListItem
                     key={theater.ID._text}
                     title={theater.Name._text}
+                    selected={selectedTheater?.id === theater.id}
+                    onClick={() => onClickHandler(theater)}
                     />
                 ))}
                 </div>

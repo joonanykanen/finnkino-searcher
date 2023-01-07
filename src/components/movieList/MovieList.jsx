@@ -3,14 +3,15 @@ import convert from "xml-js"
 import MovieListItem from "./MovieListItem";
 import "./movieList.css"
 
-const MovieList = () => {
+const MovieList = ({selectedTheater}) => {
     const [movies, setMovies] = React.useState('')
     const [movieObj, setMovieObj] = React.useState([])
     const [movie, setMovie] = React.useState('');
     const [uniqueObjects, setUniqueObjects] = React.useState([])
+    const [searchText, setSearchText] = React.useState('')
+    const [url, setUrl] = React.useState('https://www.finnkino.fi/xml/Schedule/?area=1029&dt=09.01.2023')
     const arrayObjects = []
-    const url = "https://www.finnkino.fi/xml/Schedule/?area=1014&dt=09.01.2023"
-    
+
     const getMovieData = async () => {
         /* Fetching the Finnkino API Theatre XML Data */
         fetch(url)
@@ -28,18 +29,47 @@ const MovieList = () => {
         setMovieObj(movieObj.Schedule.Shows.Show)
     }
 
+    function editUrl() {
+        console.log(url)
+        if(selectedTheater !== null && selectedTheater !== undefined) {
+            setUrl(`https://www.finnkino.fi/xml/Schedule/?area=${selectedTheater.ID._text}`)
+        }
+    }
+
+    React.useEffect(() => {
+        editUrl()
+    }, [selectedTheater])
+
     React.useEffect(() => {
         getMovieData()
-    }, [])
+    }, [url])
 
+    if(selectedTheater !== null) {
+        return(
+            <div>
+                <div className="searchBox">
+                    <input
+                    placeholder="Type a name of a movie"
+                    />
+                </div>
+                <div className="MovieList">
+                    {movieObj.map((movie) => (
+                    <MovieListItem
+                    title={movie.Title._text}
+                    />
+                ))}
+                Pick the Movie Theater again
+            </div>
+        </div>
+        )
+    }
     return(
-        <div className="MovieList">
-            {movieObj.map((movie) => (
-            <MovieListItem
-            title={movie.Title._text}
-            />
-        ))}
-        Hello from MovieList
+        <div>
+            <div className="searchBox">
+                <input
+                placeholder="Type a name of a movie"
+                />
+            </div>
         </div>
     )
 }
