@@ -1,8 +1,8 @@
 import React from "react"
 import convert from "xml-js"
-
 import Dropdown from 'react-bootstrap/Dropdown';
 import TheaterListItem from "./TheaterListItem"
+import "./theaterList.css"
 
 const TheaterList = () => {
     const [theaters, setTheaters] = React.useState('')
@@ -37,7 +37,7 @@ const TheaterList = () => {
         return(
             <div>
             <button onClick={getMovieData}>Choose a Movie Theater</button>
-                <div className="TheaterList">
+                <div className="TheaterList shadow-drop-2-center">
                     {theaterObj.map((theater) => (
                     <TheaterListItem
                     key={theater.ID._text}

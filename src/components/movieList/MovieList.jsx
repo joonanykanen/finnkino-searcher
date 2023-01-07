@@ -24,18 +24,8 @@ const MovieList = () => {
 
         /* Converting xml data into json */
         let movieData = convert.xml2json(movies, { compact: true, spaces: 4 })
-        let Object = JSON.parse(movieData)
-        setMovieObj(Object.Schedule.Shows.Show)
-
-        let array = [movieObj[0].EventID._text]
-        for (let i = 0; i < movieObj.length; i++){
-            if (!array.includes(movieObj[i].EventID._text)) {
-                array.push(movieObj[i].EventID._text)
-                setMovie(movieObj[i])
-                arrayObjects.push(movieObj[i])
-            }
-        }
-        console.log(arrayObjects)
+        let movieObj = JSON.parse(movieData)
+        setMovieObj(movieObj.Schedule.Shows.Show)
     }
 
     React.useEffect(() => {
@@ -44,10 +34,9 @@ const MovieList = () => {
 
     return(
         <div className="MovieList">
-            {arrayObjects.map((movie) => (
+            {movieObj.map((movie) => (
             <MovieListItem
-            key = {movie.EventID._text}
-            title={movie.EventID._text}
+            title={movie.Title._text}
             />
         ))}
         Hello from MovieList
