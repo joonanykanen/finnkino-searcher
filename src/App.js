@@ -1,16 +1,13 @@
-import './App.css';
-import './components/Header';
-import Header from './components/Header';
-import SearchComponent from './components/SearchComponent';
-import InfoComponent from './components/InfoComponent';
+import { RightInfoContainer, LeftSearchContainer } from './containers';
+import { Header } from './components'
 
 function App() {
   return (
     <div className="App">
       <Header />
       <div className='mainComponents'>
-        <SearchComponent />
-        <InfoComponent />
+        <LeftSearchContainer />
+        <RightInfoContainer />
       </div>
     </div>
   );

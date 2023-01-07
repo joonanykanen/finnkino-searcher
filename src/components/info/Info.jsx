@@ -1,6 +1,7 @@
 import React from "react";
+import "./info.css"
 
-const InfoComponent = () => {
+const Info = () => {
     return (
         <div className="infoComponent">
             Single Movie Info Here
@@ -8,4 +9,4 @@ const InfoComponent = () => {
     )
 }
 
-export default InfoComponent;
+export default Info;

@@ -1,11 +1,13 @@
 import React from "react"
 import convert from "xml-js"
-import TheaterListItem from "./TheaterListItem"
 
+import Dropdown from 'react-bootstrap/Dropdown';
+import TheaterListItem from "./TheaterListItem"
 
 const TheaterList = () => {
     const [theaters, setTheaters] = React.useState('')
     const [theaterObj, setTheaterObj] = React.useState([])
+    const [showTheater, setShowTheaters] = React.useState(false)
     const url = "https://www.finnkino.fi/xml/TheatreAreas/"
 
     const getMovieData = async () => {
@@ -24,24 +26,35 @@ const TheaterList = () => {
         let theaterObj = JSON.parse(theaterData)
         setTheaterObj(theaterObj.TheatreAreas.TheatreArea)
         console.log(theaterObj.TheatreAreas.TheatreArea)
+        setShowTheaters(!showTheater)
     }
 
     React.useEffect(() => {
         getMovieData()
     }, [])
-
-    if(theaterObj !== []) {
+    
+    if(showTheater) {
         return(
-            <div className="TheaterList">
-                {theaterObj.map((theater) => (
-                <TheaterListItem
-                key={theater.ID._text}
-                title={theater.Name._text}
-                />
-            ))}
+            <div>
+            <button onClick={getMovieData}>Choose a Movie Theater</button>
+                <div className="TheaterList">
+                    {theaterObj.map((theater) => (
+                    <TheaterListItem
+                    key={theater.ID._text}
+                    title={theater.Name._text}
+                    />
+                ))}
+                </div>
             </div>
+
         )
-    }
+        }
+
+    return(
+        <div>
+            <button onClick={getMovieData}>Choose a Movie Theater</button>
+        </div>
+    )
 }
 
 export default TheaterList
