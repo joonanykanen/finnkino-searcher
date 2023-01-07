@@ -3,7 +3,9 @@ import "./rightInfoContainer.css"
 
 function RightInfoContainer() {
   return (
-    <div className='infoContainer'>RightInfoContainer</div>
+    <div className='infoContainer'>
+      <h4>RightInfoContainer</h4>
+    </div>
   )
 }
 
