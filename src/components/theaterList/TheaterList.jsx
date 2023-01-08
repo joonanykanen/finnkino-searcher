@@ -35,7 +35,7 @@ const TheaterList = ({ selectedTheater, setSelectedTheater }) => {
     
     const onClickHandler = (theater) => {
         setSelectedTheater(
-            selectedTheater === null || theater !== selectedTheater ? theater : null
+            selectedTheater === null || theater.ID !== selectedTheater.ID ? theater : null
         )
         setShowTheaters(!showTheater)
       }

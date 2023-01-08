@@ -3,14 +3,11 @@ import convert from "xml-js"
 import MovieListItem from "./MovieListItem";
 import "./movieList.css"
 
-const MovieList = ({selectedTheater}) => {
+const MovieList = ({selectedTheater, selectedMovie, setSelectedMovie}) => {
     const [movies, setMovies] = React.useState([])
     const [movieObj, setMovieObj] = React.useState([])
-    const [movie, setMovie] = React.useState('');
-    const [uniqueObjects, setUniqueObjects] = React.useState([])
     const [searchText, setSearchText] = React.useState('')
-    const [url, setUrl] = React.useState('')
-    const arrayObjects = []
+    const [url, setUrl] = React.useState('https://www.finnkino.fi/xml/Schedule/')
 
     const getMovieData = async () => {
         /* Fetching the Finnkino API Theatre XML Data */
@@ -39,6 +36,10 @@ const MovieList = ({selectedTheater}) => {
         }
     }
 
+    const filteredMovies = movieObj.filter((movie) =>
+        movie.Title._text.toLowerCase().includes(searchText.toLowerCase())
+    )
+
     React.useEffect(() => {
         editUrl()
     }, [selectedTheater])
@@ -47,18 +48,28 @@ const MovieList = ({selectedTheater}) => {
         getMovieData()
     }, [url])
 
-    if(selectedTheater !== null) {
+    const onClickHandler = (movie) => {
+        setSelectedMovie(
+            selectedMovie === null || movie !== selectedMovie ? movie : null
+        )
+    }
+    
+    if(selectedTheater !== null && filteredMovies !== 0) {
         return(
             <div>
                 <div className="searchBox">
                     <input
                     placeholder="Type a name of a movie" className="searchField"
+                    value={searchText}
+                    onChange={(event) => setSearchText(event.target.value)}
                     />
                 </div>
                 <div className="MovieList">
-                    {movieObj.map((movie) => (
+                    {filteredMovies.map((movie) => (
                     <MovieListItem
                     title={movie.Title._text}
+                    selected={selectedMovie?.ID === movie.ID}
+                    onClick={() => onClickHandler(movie)}
                     />
                 ))}
             </div>
@@ -69,7 +80,7 @@ const MovieList = ({selectedTheater}) => {
         <div>
             <div className="searchBox">
                 <input
-                placeholder="Type a name of a movie"
+                placeholder="Type a name of a movie" className="searchField"
                 />
             </div>
         </div>
