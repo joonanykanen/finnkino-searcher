@@ -10,9 +10,9 @@ The main idea of this project was to try creating an app that can show Finnkino'
 
 Note that this project is still in alpha-phase and may contain bugs and errors.
 
-Preview Image:
+Preview:
 
-![Preview Image](https://github.com/joonanykanen/finnkino-searcher/site-alpha-preview.png)
+![Preview Image](https://raw.githubusercontent.com/joonanykanen/finnkino-searcher/master/public/site-alpha-preview.png)
 
 ## Dependencies
 
