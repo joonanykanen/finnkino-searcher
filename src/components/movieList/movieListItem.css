@@ -1,5 +1,15 @@
 
 .MovieListItem {
     color: #eeeeee;
-    margin-top: 0.5rem;
+    font-size: large;
+    font-weight: 600;
+    cursor: pointer;
 }
+
+.MovieListItem:hover {
+    color: #FEC704;
+    animation: ease-out;
+    transition: 0.3s;
+    transform: scale(1.02);
+}
+

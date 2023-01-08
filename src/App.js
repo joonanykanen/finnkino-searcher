@@ -4,10 +4,10 @@ import { Header } from './components'
 function App() {
   return (
     <div className="App">
-      <Header />
-      <div className='mainComponents'>
-        <LeftSearchContainer />
-        <RightInfoContainer />
+      <div className='head'><Header /></div>
+      <div className='mainContainers'>
+        <div className="search"><LeftSearchContainer /></div>
+        <div className="info"><RightInfoContainer /></div>
       </div>
     </div>
   );

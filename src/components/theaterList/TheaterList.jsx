@@ -5,12 +5,12 @@ import TheaterListItem from "./TheaterListItem"
 import "./theaterList.css"
 
 const TheaterList = ({ selectedTheater, setSelectedTheater }) => {
-    const [theaters, setTheaters] = React.useState('')
+    const [theaters, setTheaters] = React.useState([])
     const [theaterObj, setTheaterObj] = React.useState([])
     const [showTheater, setShowTheaters] = React.useState(false)
     const url = "https://www.finnkino.fi/xml/TheatreAreas/"
 
-    const getMovieData = async () => {
+    const getTheaterData = async () => {
         /* Fetching the Finnkino API Theatre XML Data */
         fetch(url)
         .then((response) => response.text())
@@ -30,12 +30,12 @@ const TheaterList = ({ selectedTheater, setSelectedTheater }) => {
     }
 
     React.useEffect(() => {
-        getMovieData()
+        getTheaterData()
     }, [])
     
     const onClickHandler = (theater) => {
         setSelectedTheater(
-            selectedTheater === null || theater.id !== selectedTheater.id ? theater : null
+            selectedTheater === null || theater !== selectedTheater ? theater : null
         )
         setShowTheaters(!showTheater)
       }
@@ -43,13 +43,13 @@ const TheaterList = ({ selectedTheater, setSelectedTheater }) => {
     if(showTheater) {
         return(
             <div>
-            <button onClick={getMovieData}>Choose a Movie Theater</button>
+            <button onClick={getTheaterData} className="theaterButton">Choose a Movie Theater</button>
                 <div className="TheaterList shadow-drop-2-center">
                     {theaterObj.map((theater) => (
                     <TheaterListItem
                     key={theater.ID._text}
                     title={theater.Name._text}
-                    selected={selectedTheater?.id === theater.id}
+                    selected={selectedTheater?.ID === theater.ID}
                     onClick={() => onClickHandler(theater)}
                     />
                 ))}
@@ -57,11 +57,11 @@ const TheaterList = ({ selectedTheater, setSelectedTheater }) => {
             </div>
 
         )
-        }
+    }
 
     return(
         <div>
-            <button onClick={getMovieData}>Choose a Movie Theater</button>
+            <button onClick={getTheaterData} className="theaterButton">Choose a Movie Theater</button>
         </div>
     )
 }

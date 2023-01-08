@@ -4,12 +4,12 @@ import MovieListItem from "./MovieListItem";
 import "./movieList.css"
 
 const MovieList = ({selectedTheater}) => {
-    const [movies, setMovies] = React.useState('')
+    const [movies, setMovies] = React.useState([])
     const [movieObj, setMovieObj] = React.useState([])
     const [movie, setMovie] = React.useState('');
     const [uniqueObjects, setUniqueObjects] = React.useState([])
     const [searchText, setSearchText] = React.useState('')
-    const [url, setUrl] = React.useState('https://www.finnkino.fi/xml/Schedule/?area=1029&dt=09.01.2023')
+    const [url, setUrl] = React.useState('')
     const arrayObjects = []
 
     const getMovieData = async () => {
@@ -27,6 +27,9 @@ const MovieList = ({selectedTheater}) => {
         let movieData = convert.xml2json(movies, { compact: true, spaces: 4 })
         let movieObj = JSON.parse(movieData)
         setMovieObj(movieObj.Schedule.Shows.Show)
+
+        /* Use area, eventID & nrOfDays
+        Example url: https://www.finnkino.fi/xml/Schedule/?area=1014&eventID=303897&nrOfDays=7 */
     }
 
     function editUrl() {
@@ -49,7 +52,7 @@ const MovieList = ({selectedTheater}) => {
             <div>
                 <div className="searchBox">
                     <input
-                    placeholder="Type a name of a movie"
+                    placeholder="Type a name of a movie" className="searchField"
                     />
                 </div>
                 <div className="MovieList">
@@ -58,7 +61,6 @@ const MovieList = ({selectedTheater}) => {
                     title={movie.Title._text}
                     />
                 ))}
-                Pick the Movie Theater again
             </div>
         </div>
         )
