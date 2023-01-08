@@ -1,8 +1,7 @@
 import React from "react";
-import "./info.css"
 import ShowtimeList from './ShowtimeList'
 import EventTitle from './EventTitle'
-
+import "./info.css"
 
 const Info = ({ selectedTheater, selectedMovie }) => {
 
@@ -10,19 +9,20 @@ const Info = ({ selectedTheater, selectedMovie }) => {
         return(
             <div className="infoComponent">
                 <div className="titleBox">
-                    <EventTitle title={selectedMovie.Title._text}/>
+                    <EventTitle movie={selectedMovie} className="title"/>
                 </div>
-
-                <div className="infoBox">
-                {selectedMovie.LengthInMinutes._text}
+                <div className="length">
+                    Length: {selectedMovie.LengthInMinutes._text} min
                 </div>
-                <img 
-                    src={selectedMovie.Images.EventSmallImagePortrait._text
-                    }
-                    alt="new"
-                    />
-                <div className="showtimeList">
-                    <ShowtimeList selectedTheater={selectedTheater} selectedMovie={selectedMovie}/>
+                <div className="picntime">
+                    <div className="showtimeList">
+                            <ShowtimeList selectedTheater={selectedTheater} selectedMovie={selectedMovie}/>
+                        </div>
+                    <img 
+                        src={selectedMovie.Images.EventMediumImagePortrait._text
+                        }
+                        alt="new" className="coverImg"
+                        />
                 </div>
             </div>
         )

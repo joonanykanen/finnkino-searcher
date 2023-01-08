@@ -1,7 +1,7 @@
 import React from "react";
 import convert from "xml-js"
-import "./showtimeList.css"
 import ShowtimeListItem from "./ShowtimeListItem";
+import "./showtimeList.css"
 
 const ShowtimeList = ({selectedTheater, selectedMovie}) => {
     const [showtime, setShowtime] = React.useState('')
@@ -45,8 +45,8 @@ const ShowtimeList = ({selectedTheater, selectedMovie}) => {
     if(selectedMovie !== null && showtimeObj !== 0 && showtimeObj !== undefined) {
         return(
             <div>
-                <button onClick={getShowtimes}>
-                    Showtimes
+                <button onClick={getShowtimes} className="timeBtn">
+                    Show Times:
                 </button>
                 <div className="showtimeList">
                     {console.log(showtimeObj)}
@@ -55,9 +55,7 @@ const ShowtimeList = ({selectedTheater, selectedMovie}) => {
                     showtime={movie.dttmShowStart._text}
                     />
                 ))}
-                    
                 </div>
-                {selectedMovie.Title._text}
             </div>
         )
     }

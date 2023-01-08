@@ -1,8 +1,42 @@
 
 .infoComponent {
-  background-color: aqua;
   display: flex;
-  border: 1px solid black;
+  flex-direction: column;
   border-radius: 0.2rem;
   }
   
+.coverImg {
+  position: absolute;
+  grid-area: cover;
+  border-radius: 0.2rem;
+  height: auto;
+  max-width: 30vh;
+  margin-left: 30vw;
+  right: 0;
+  filter: drop-shadow(0 0 0.75rem rgb(0, 0, 0));
+  margin: 1rem;
+  margin-top: 0rem;
+}
+
+.length {
+  position: flex;
+  background-color: rgba(10, 10, 10, 0.5);
+  border-radius: 0.2rem;
+  font-size: x-large;
+  font-weight: 600;
+  color: white;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
+.picntime {
+  margin-top: 1rem;
+  display: flex;
+  position: static;
+  left: 0;
+}
+
+.showtimeList {
+  position: flex;
+  grid-area: show;
+}
