@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box; }
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,49 +8,32 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #595959;
+  background: url('../public/assets/background-pattern.png') repeat top center;
+  background-color: white;
+  background-size: cover;
+  line-height: 1.5;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App {
+  overflow: hidden;
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-template-areas:
+  "head head head"
+  "cont cont cont";
+  grid-template-rows: 100px 1fr;
+  grid-template-columns: repeat(3, 1fr);
 }
 
-header {
-  background-color: #232323;
-  text-align: left;
-  width: 100%;
-  height: 80px;
-  top: 0;
-  position: fixed;
-  z-index: 5;
-  
-}
-
-h1 {
-  color: #FEC704;
-}
-
-.mainComponents{
+.head {
+  grid-area: head;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  margin-top: 100px;
-  margin-bottom: 1rem;
-  padding: 10px;
 }
 
-.searchComponent {
-  background-color: #FEC704;
-  width: 500px;
-  height: 800px;
-  border: 1px solid black;
-
-}
-
-.infoComponent {
-  background-color: #ae1515;
-  width: 500px;
-  height: 800px;
-  border: 1px solid black;
+.mainContainers{
+  grid-area: cont;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

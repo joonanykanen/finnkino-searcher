@@ -1,0 +1,38 @@
+.showtimeListItem {
+    color: #eeeeee;
+    font-size: large;
+    font-weight: 600;
+    cursor: default;
+    padding: 0.5rem;
+}
+
+.showtimeListItem:hover {
+    color: #FEC704;
+    animation: ease-out;
+    transition: 0.3s;
+    transform: scale(1.02);
+}
+
+.timeBtn {
+	display: flex;
+	font-size: large;
+	padding: 0.5rem;
+	color: white;
+	font-weight: 700;
+	width: 100%;
+	align-items: center;
+	justify-content: left;
+	background: rgb(25,25,25);
+	background: linear-gradient(90deg, rgba(25,25,25,0.2) 0%, rgba(74,74,74,0.2) 100%); 
+	outline: none;
+	border-radius: 4px;
+	border-style: none;
+	overflow: hidden;
+	position: relative;
+}
+
+.timeBtn:hover {
+    color: #FEC704;
+	animation: ease-out;
+    transition: 0.3s;
+}

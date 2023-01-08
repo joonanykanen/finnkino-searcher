@@ -1,9 +1,13 @@
 import React from "react";
+import "./header.css";
 
 const Header = () => {
     return (
         <header className="headerFinnkino">
-            <h1>Finnkino Searcher</h1>
+            <div className="divText">
+                <h1 className="headerText">Finnkino Searcher</h1>
+            </div>
+
         </header>
     )
 }

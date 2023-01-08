@@ -1,0 +1,15 @@
+
+.TheaterListItem {
+    color: #eeeeee;
+    font-size: large;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.TheaterListItem:hover {
+    color: #FEC704;
+    animation: ease-out;
+    transition: 0.3s;
+    transform: scale(1.02);
+}
+

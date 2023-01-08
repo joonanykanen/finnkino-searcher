@@ -1,0 +1,14 @@
+
+.title {
+    background-color: rgba(100, 95, 82, 0.3);
+    border-radius: 0.2rem;
+    font-size: x-large;
+    font-weight: 600;
+    color: white;
+    padding: 1rem;
+}
+
+.infotext {
+    display: flex;
+    color: #FEC704;
+}
