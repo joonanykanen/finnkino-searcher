@@ -16,7 +16,9 @@ Preview:
 
 ## Dependencies
 
-You will probably need to install [xml-js](https://www.npmjs.com/package/xml-js) packet in order to get the data parsing working.
+Use `npm install` to get the necessary node modules.
+
+You will probably need to install [xml-js](https://www.npmjs.com/package/xml-js) packet as well in order to get the data parsing working.
 
 ## Available Scripts
 

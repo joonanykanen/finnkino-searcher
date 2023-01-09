@@ -11,23 +11,27 @@ const TheaterList = ({ selectedTheater, setSelectedTheater }) => {
     const url = "https://www.finnkino.fi/xml/TheatreAreas/"
 
     const getTheaterData = async () => {
-        /* Fetching the Finnkino API Theatre XML Data */
-        fetch(url)
-        .then((response) => response.text())
-        .then((textResponse) => {
-            setTheaters(textResponse)
-        })
-        .catch((error) => {
-            console.log(error);
-        });
-
-        /* Converting xml data into json */
-        let theaterData = convert.xml2json(theaters, { compact: true, spaces: 4 })
-        let theaterObj = JSON.parse(theaterData)
-        setTheaterObj(theaterObj.TheatreAreas.TheatreArea)
-        console.log(theaterObj.TheatreAreas.TheatreArea)
-        setShowTheaters(!showTheater)
-    }
+        try {
+          // Fetch the Finnkino API Theatre XML Data
+          const response = await fetch(url);
+          // Get the text response from the API
+          const textResponse = await response.text();
+          // Set the theaters state with the text response
+          setTheaters(textResponse);
+      
+          // Convert the xml data into json
+          const theaterData = convert.xml2json(theaters, { compact: true, spaces: 4 });
+          const theaterObj = JSON.parse(theaterData);
+          // Set the theaterObj state with the parsed json data
+          setTheaterObj(theaterObj.TheatreAreas.TheatreArea);
+          console.log(theaterObj.TheatreAreas.TheatreArea);
+          // Toggle the showTheater state
+          setShowTheaters(!showTheater);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      
 
     React.useEffect(() => {
         getTheaterData()
