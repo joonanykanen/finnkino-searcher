@@ -44,7 +44,26 @@ const TheaterList = ({ selectedTheater, setSelectedTheater }) => {
         setShowTheaters(!showTheater)
       }
 
-    if(showTheater) {
+    
+    // When the list is opened
+    if(showTheater && selectedTheater !== null) {
+        return(
+            <div>
+            <button onClick={getTheaterData} className="theaterButton">{selectedTheater.Name._text}</button>
+                <div className="TheaterList shadow-drop-2-center">
+                    {theaterObj.map((theater) => (
+                    <TheaterListItem
+                    key={theater.ID._text}
+                    title={theater.Name._text}
+                    selected={selectedTheater?.ID === theater.ID}
+                    onClick={() => onClickHandler(theater)}
+                    />
+                ))}
+                </div>
+            </div>
+        )
+    }
+    else if(showTheater) {
         return(
             <div>
             <button onClick={getTheaterData} className="theaterButton">Choose a Movie Theater</button>
@@ -59,15 +78,23 @@ const TheaterList = ({ selectedTheater, setSelectedTheater }) => {
                 ))}
                 </div>
             </div>
-
         )
     }
 
+    // When the list is closed
+    if (selectedTheater !== null) {
+        return(
+            <div>
+                <button onClick={getTheaterData} className="theaterButton">{selectedTheater.Name._text}</button>
+            </div>
+        )
+    } else {
     return(
         <div>
             <button onClick={getTheaterData} className="theaterButton">Choose a Movie Theater</button>
         </div>
     )
+    }
 }
 
 export default TheaterList

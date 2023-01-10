@@ -6,13 +6,17 @@ import "./info.css"
 const Info = ({ selectedTheater, selectedMovie }) => {
 
     if(selectedMovie !== null) {
+        let len_min = selectedMovie.LengthInMinutes._text
+        const hours = Math.floor(len_min / 60)
+        const minutes = len_min % 60 // Mins left of full hours
+
         return(
             <div className="infoComponent">
                 <div className="titleBox">
                     <EventTitle movie={selectedMovie} className="title"/>
                 </div>
                 <div className="length">
-                    Length: {selectedMovie.LengthInMinutes._text} min
+                    Length: {hours} h {minutes} min
                 </div>
                 <div className="picntime">
                     <div className="showtimeList">
