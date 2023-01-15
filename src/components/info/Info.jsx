@@ -18,10 +18,16 @@ const Info = ({ selectedTheater, selectedMovie }) => {
                 <div className="length">
                     Length: {hours} h {minutes} min
                 </div>
+                <div className="genres">
+                    Genres: {selectedMovie.Genres._text}
+                </div>
                 <div className="picntime">
                     <div className="showtimeList">
                             <ShowtimeList selectedTheater={selectedTheater} selectedMovie={selectedMovie}/>
                         </div>
+                    <div className="description">
+                        
+                    </div>
                     <img 
                         src={selectedMovie.Images.EventMediumImagePortrait._text
                         }
