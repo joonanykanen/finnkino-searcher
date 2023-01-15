@@ -29,6 +29,17 @@
   padding: 1rem;
 }
 
+.genres {
+  position: flex;
+  background-color: rgba(20, 20, 20, 0.5);
+  border-radius: 0.2rem;
+  font-size: x-large;
+  font-weight: 500;
+  color: #eeeeee;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+
 .picntime {
   margin-top: 1rem;
   display: flex;
