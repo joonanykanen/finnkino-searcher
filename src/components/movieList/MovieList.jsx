@@ -36,7 +36,6 @@ const MovieList = ({selectedTheater, selectedMovie, setSelectedMovie}) => {
     };
   
     function editUrl() {
-      console.log(url);
       if (selectedTheater !== null && selectedTheater !== undefined) {
         setUrl(`https://www.finnkino.fi/xml/Schedule/?area=${selectedTheater.ID._text}`);
       }

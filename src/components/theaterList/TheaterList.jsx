@@ -1,8 +1,8 @@
 import React from "react"
 import convert from "xml-js"
-/*  import Dropdown from 'react-bootstrap/Dropdown';    Consider getting rid of this dependency  */
 import TheaterListItem from "./TheaterListItem"
 import "./theaterList.css"
+import 'font-awesome/css/font-awesome.min.css';
 
 const TheaterList = ({ selectedTheater, setSelectedTheater }) => {
     const [theaters, setTheaters] = React.useState([])
@@ -46,27 +46,10 @@ const TheaterList = ({ selectedTheater, setSelectedTheater }) => {
 
     
     // When the list is opened
-    if(showTheater && selectedTheater !== null) {
+    if(showTheater) {
         return(
             <div>
-            <button onClick={getTheaterData} className="theaterButton">{selectedTheater.Name._text}</button>
-                <div className="TheaterList shadow-drop-2-center">
-                    {theaterObj.map((theater) => (
-                    <TheaterListItem
-                    key={theater.ID._text}
-                    title={theater.Name._text}
-                    selected={selectedTheater?.ID === theater.ID}
-                    onClick={() => onClickHandler(theater)}
-                    />
-                ))}
-                </div>
-            </div>
-        )
-    }
-    else if(showTheater) {
-        return(
-            <div>
-            <button onClick={getTheaterData} className="theaterButton">Choose a Movie Theater</button>
+            <button onClick={getTheaterData} className="theaterButton">{selectedTheater !== null ? selectedTheater.Name._text : "Choose a Movie Theater"}<i className="fa fa-caret-down"></i></button>
                 <div className="TheaterList shadow-drop-2-center">
                     {theaterObj.map((theater) => (
                     <TheaterListItem
@@ -82,19 +65,11 @@ const TheaterList = ({ selectedTheater, setSelectedTheater }) => {
     }
 
     // When the list is closed
-    if (selectedTheater !== null) {
-        return(
-            <div>
-                <button onClick={getTheaterData} className="theaterButton">{selectedTheater.Name._text}</button>
-            </div>
-        )
-    } else {
     return(
         <div>
-            <button onClick={getTheaterData} className="theaterButton">Choose a Movie Theater</button>
+            <button onClick={getTheaterData} className="theaterButton">{selectedTheater !== null ? selectedTheater.Name._text : "Choose a Movie Theater"}<i className="fa fa-caret-down"></i></button>
         </div>
     )
-    }
 }
 
 export default TheaterList

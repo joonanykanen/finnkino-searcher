@@ -1,5 +1,4 @@
 .showtimeList {
-    background-color: rgba(50, 50, 50, 0.5);
     backdrop-filter: blur(1rem);
     display: flex;
     flex-direction: column;
@@ -7,4 +6,6 @@
     width: 15vw;
     height: 45vh;
     overflow-y: auto;
+    border-radius: 0.2rem;
+	background: linear-gradient(90deg, rgba(25,25,25,0.2) 0%, rgba(74,74,74,0.2) 100%); 
 }
