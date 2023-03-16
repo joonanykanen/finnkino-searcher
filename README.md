@@ -12,7 +12,7 @@ Note that this project is still in alpha-phase and may contain bugs and errors.
 
 Preview:
 
-![Preview Image](https://raw.githubusercontent.com/joonanykanen/finnkino-searcher/master/public/site-alpha-preview.png)
+![Preview Image](https://raw.githubusercontent.com/joonanykanen/finnkino-searcher/master/public/site-alpha-preview-browsershot.png)
 
 ## Dependencies
 
